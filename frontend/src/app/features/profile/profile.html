@@ -1,0 +1,128 @@
+<div class="profile-page">
+
+    <div class="profile-header">
+
+        <div class="avatar">
+            👤
+        </div>
+
+        <h1>Mi Perfil</h1>
+
+        <p>Administra tu información personal y la seguridad de tu cuenta.</p>
+
+    </div>
+
+    <div class="profile-card">
+
+        <h2>Información Personal</h2>
+
+        <form [formGroup]="form"
+              (ngSubmit)="guardarPerfil()">
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Nombre</label>
+
+                    <input
+                        type="text"
+                        formControlName="nombre">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Apellido</label>
+
+                    <input
+                        type="text"
+                        formControlName="apellido">
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Correo electrónico</label>
+
+                <input
+                    type="email"
+                    formControlName="correo">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Teléfono</label>
+
+                <input
+                    type="text"
+                    formControlName="telefono">
+
+            </div>
+
+            <button
+                class="primary-btn"
+                type="submit">
+
+                Guardar cambios
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="profile-card">
+
+        <h2>Seguridad</h2>
+
+        <form
+            [formGroup]="passwordForm"
+            (ngSubmit)="cambiarPassword()">
+
+            <div class="form-group">
+
+                <label>Contraseña actual</label>
+
+                <input
+                    type="password"
+                    formControlName="password_actual">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Nueva contraseña</label>
+
+                <input
+                    type="password"
+                    formControlName="password">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Confirmar contraseña</label>
+
+                <input
+                    type="password"
+                    formControlName="password_confirmation">
+
+            </div>
+
+            <button
+                class="primary-btn"
+                type="submit">
+
+                Actualizar contraseña
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
