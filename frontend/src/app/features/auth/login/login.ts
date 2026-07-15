@@ -6,10 +6,10 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.html',
+  styleUrls: ['./login.css']
 })
-export class LoginComponent {
+export class Login {
 
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);

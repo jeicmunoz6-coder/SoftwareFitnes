@@ -1,0 +1,146 @@
+<div class="register-container">
+
+    <div class="register-card">
+
+        <h1>Crear Cuenta</h1>
+
+        <p>Completa la información para registrarte.</p>
+
+        <form [formGroup]="registerForm" (ngSubmit)="registrar()">
+
+            <div class="row">
+
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input
+                        type="text"
+                        formControlName="nombre"
+                        placeholder="Ingresa tu nombre">
+                        @if (registerForm.controls.nombre.invalid &&
+     registerForm.controls.nombre.touched) {
+
+    <small class="text-error">
+        El nombre es obligatorio.
+    </small>
+
+}
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input
+    type="text"
+    formControlName="apellido"
+    placeholder="Ingresa tu apellido">
+
+@if (registerForm.controls.apellido.invalid &&
+     registerForm.controls.apellido.touched) {
+
+    <small class="text-error">
+        El apellido es obligatorio.
+    </small>
+
+}
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input
+    type="email"
+    formControlName="correo"
+    placeholder="ejemplo@correo.com">
+
+@if (registerForm.controls.correo.invalid &&
+     registerForm.controls.correo.touched) {
+
+    <small class="text-error">
+        Ingresa un correo válido.
+    </small>
+
+}
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input
+    type="text"
+    formControlName="telefono">
+
+@if (registerForm.controls.telefono.invalid &&
+     registerForm.controls.telefono.touched) {
+
+    <small class="text-error">
+        El teléfono es obligatorio.
+    </small>
+
+}
+            </div>
+
+            <div class="row">
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input
+    type="password"
+    formControlName="password">
+
+@if (registerForm.controls.password.invalid &&
+     registerForm.controls.password.touched) {
+
+    <small class="text-error">
+        Debe tener mínimo 8 caracteres.
+    </small>
+
+}
+                </div>
+
+                <div class="form-group">
+                    <label>Confirmar contraseña</label>
+                    <input
+    type="password"
+    formControlName="password_confirmation">
+
+@if (registerForm.controls.password_confirmation.invalid &&
+     registerForm.controls.password_confirmation.touched) {
+
+    <small class="text-error">
+        Debes confirmar la contraseña.
+    </small>
+
+}
+                </div>
+
+            </div>
+
+            @if (mensaje) {
+                <div class="success">
+                    {{ mensaje }}
+                </div>
+            }
+
+            @if (error) {
+                <div class="error">
+                    {{ error }}
+                </div>
+            }
+
+            <button
+    type="submit"
+    [disabled]="registerForm.invalid">
+    Crear cuenta
+</button>
+
+            <div class="login-link">
+    <p>
+        ¿Ya tienes una cuenta?
+        <a routerLink="/cliente/login">Inicia sesión</a>
+    </p>
+</div>
+
+        </form>
+
+    </div>
+
+</div>

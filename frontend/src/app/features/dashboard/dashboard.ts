@@ -7,12 +7,12 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  templateUrl: './dashboard.html',
+  styleUrls: ['./dashboard.css'],
   imports: [CommonModule, RouterLink]
 })
 
-export class DashboardComponent implements OnInit {
+export class Dashboard implements OnInit {
 
   private router = inject(Router);
   private authService = inject(AuthService);

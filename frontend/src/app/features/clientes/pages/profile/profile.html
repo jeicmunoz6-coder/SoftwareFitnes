@@ -1,0 +1,224 @@
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <h1>Mi Perfil</h1>
+
+        <p>Consulta y actualiza tu información personal.</p>
+
+        <form [formGroup]="profileForm">
+
+            <div class="row">
+
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" formControlName="nombre" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" formControlName="apellido" readonly>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input type="email" formControlName="correo" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" formControlName="telefono" readonly>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label>Estado de la cuenta</label>
+                <input type="text" formControlName="estado" readonly>
+            </div>
+
+            <hr>
+
+            <div class="row">
+
+                <div class="form-group">
+                    <label>Fecha de nacimiento</label>
+                    <input
+                        type="date"
+                        formControlName="fecha_nacimiento"
+                        [readonly]="!editando">
+                </div>
+
+                <div class="form-group">
+
+                    <label>Sexo</label>
+
+                    <select
+                        formControlName="sexo"
+                        [disabled]="!editando">
+
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Otro">Otro</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group">
+                    <label>Peso (kg)</label>
+                    <input
+                        type="number"
+                        formControlName="peso"
+                        [readonly]="!editando">
+                </div>
+
+                <div class="form-group">
+                    <label>Altura (m)</label>
+                    <input
+                        type="number"
+                        step="0.01"
+                        formControlName="altura"
+                        [readonly]="!editando">
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label>Objetivo</label>
+                <input
+                    type="text"
+                    formControlName="objetivo"
+                    [readonly]="!editando">
+            </div>
+
+            <div class="form-group">
+
+                <label>Nivel de actividad</label>
+
+                <select
+                    formControlName="nivel_actividad"
+                    [disabled]="!editando">
+
+                    <option value="Sedentario">Sedentario</option>
+                    <option value="Ligero">Ligero</option>
+                    <option value="Moderado">Moderado</option>
+                    <option value="Intenso">Intenso</option>
+                    <option value="Muy intenso">Muy intenso</option>
+
+                </select>
+
+            </div>
+
+            @if(mensaje){
+
+                <div class="success">
+
+                    {{mensaje}}
+
+                </div>
+
+            }
+
+            @if(error){
+
+                <div class="error">
+
+                    {{error}}
+
+                </div>
+
+            }
+
+            @if(!editando){
+
+                <button
+                    type="button"
+                    (click)="editar()">
+
+                    Editar perfil
+
+                </button>
+
+            }
+
+            @if(editando){
+
+                <button
+                    type="button"
+                    (click)="guardar()">
+
+                    Guardar cambios
+
+                </button>
+
+            }
+
+            <button
+    type="button"
+    class="logout"
+    (click)="cerrarSesion()">
+
+    Cerrar sesión
+
+</button>
+
+        </form>
+
+
+        
+<h2>Cambiar contraseña</h2>
+
+<form
+  [formGroup]="passwordForm"
+  (ngSubmit)="cambiarPassword()">
+
+  <div class="form-group">
+
+    <label>Contraseña actual</label>
+
+    <input
+      type="password"
+      formControlName="password_actual">
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Nueva contraseña</label>
+
+    <input
+      type="password"
+      formControlName="password">
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Confirmar nueva contraseña</label>
+
+    <input
+      type="password"
+      formControlName="password_confirmation">
+
+  </div>
+
+  <button type="submit">
+
+    Cambiar contraseña
+
+  </button>
+
+</form>
+    </div>
+
+</div>
+

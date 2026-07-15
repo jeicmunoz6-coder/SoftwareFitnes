@@ -1,0 +1,153 @@
+<div class="perfil-container">
+
+    <div class="perfil-card">
+
+        <h1>Completa tu perfil</h1>
+
+        <p>
+            Esta información nos ayudará a personalizar tu plan de entrenamiento.
+        </p>
+
+        <form [formGroup]="perfilForm" (ngSubmit)="guardarPerfil()">
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Fecha de nacimiento</label>
+
+                    <input
+                        type="date"
+                        formControlName="fecha_nacimiento">
+
+                    @if (perfilForm.controls.fecha_nacimiento.invalid &&
+                         perfilForm.controls.fecha_nacimiento.touched) {
+
+                        <small class="text-error">
+                            Este campo es obligatorio.
+                        </small>
+
+                    }
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Sexo</label>
+
+                    <select formControlName="sexo">
+
+                        <option value="">Seleccione...</option>
+
+                        <option value="Masculino">Masculino</option>
+
+                        <option value="Femenino">Femenino</option>
+
+                        <option value="Otro">Otro</option>
+
+                    </select>
+
+                    @if (perfilForm.controls.sexo.invalid &&
+                         perfilForm.controls.sexo.touched) {
+
+                        <small class="text-error">
+                            Selecciona una opción.
+                        </small>
+
+                    }
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Peso (kg)</label>
+
+                    <input
+                        type="number"
+                        formControlName="peso">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Altura (m)</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        formControlName="altura">
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Objetivo</label>
+
+                <input
+                    type="text"
+                    formControlName="objetivo"
+                    placeholder="Ejemplo: Ganar masa muscular">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Nivel de actividad</label>
+
+                <select formControlName="nivel_actividad">
+
+                    <option value="">Seleccione...</option>
+
+                    <option value="Sedentario">Sedentario</option>
+
+                    <option value="Ligero">Ligero</option>
+
+                    <option value="Moderado">Moderado</option>
+
+                    <option value="Intenso">Intenso</option>
+
+                    <option value="Muy intenso">Muy intenso</option>
+
+                </select>
+
+            </div>
+
+            @if (mensaje) {
+
+                <div class="success">
+
+                    {{ mensaje }}
+
+                </div>
+
+            }
+
+            @if (error) {
+
+                <div class="error">
+
+                    {{ error }}
+
+                </div>
+
+            }
+
+            <button
+                type="submit"
+                [disabled]="perfilForm.invalid">
+
+                Guardar perfil
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>

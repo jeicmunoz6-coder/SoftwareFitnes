@@ -1,0 +1,144 @@
+<div class="frame">
+
+  <!-- PANEL IZQUIERDO -->
+  <div class="photo-side">
+
+    <span class="corner-badge">
+      <span class="live-dot"></span>
+      Panel Administrador
+    </span>
+
+    <div class="visual-content">
+      <img
+        src="assets/images/login-fitness.png"
+        alt="Fitness">
+
+      <h2>
+        Cada repetición
+        <span>cuenta.</span>
+      </h2>
+
+      <p>
+        Controla tus rutinas, tus atletas y el rendimiento del gimnasio desde un solo panel.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- PANEL DERECHO -->
+  <div class="form-side">
+
+    <div class="logo-row">
+
+      <div class="mark">
+        🏋️
+      </div>
+
+      <div class="word-mark">
+        <div class="top">Fitness System</div>
+        <div class="bottom">Administrador</div>
+      </div>
+
+    </div>
+
+    <h1 class="title">
+      Iniciar sesión
+    </h1>
+
+    <p class="desc">
+      Acceso exclusivo para administradores.
+    </p>
+
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="iniciarSesion()">
+
+      <label class="field-label">
+        Correo electrónico
+      </label>
+
+      <div class="field">
+        <input
+          type="email"
+          formControlName="correo"
+          placeholder="admin@fitness.com">
+
+        @if (loginForm.get('correo')?.touched &&
+        loginForm.get('correo')?.invalid) {
+
+          <small>
+
+            @if (loginForm.get('correo')?.errors?.['required']) {
+              El correo es obligatorio.
+            }
+
+            @if (loginForm.get('correo')?.errors?.['email']) {
+              Correo inválido.
+            }
+
+          </small>
+
+        }
+
+      </div>
+
+      <label class="field-label">
+        Contraseña
+      </label>
+
+      <div class="field">
+
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="********">
+
+        @if (loginForm.get('password')?.touched &&
+        loginForm.get('password')?.invalid) {
+
+          <small>
+
+            @if (loginForm.get('password')?.errors?.['required']) {
+              La contraseña es obligatoria.
+            }
+
+            @if (loginForm.get('password')?.errors?.['minlength']) {
+              Debe tener mínimo 6 caracteres.
+            }
+
+          </small>
+
+        }
+
+      </div>
+
+      <div class="row-between">
+
+        <label class="remember">
+          <input type="checkbox">
+          Recordarme
+        </label>
+
+        <a href="#" class="link">
+          ¿Olvidaste tu contraseña?
+        </a>
+
+      </div>
+
+      <button
+        type="submit"
+        class="submit">
+
+        Iniciar sesión
+
+      </button>
+
+    </form>
+
+    <div class="footer-note">
+      © 2026 Fitness System
+    </div>
+
+  </div>
+
+</div>
