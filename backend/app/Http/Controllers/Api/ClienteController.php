@@ -10,15 +10,25 @@ class ClienteController extends Controller
     public function index(Request $request)
 {
     $buscar = $request->buscar;
+    $estado = $request->estado;
 
-    $clientes = Cliente::when($buscar, function ($query) use ($buscar) {
-        $query->where('nombre', 'like', "%{$buscar}%")
-              ->orWhere('apellido', 'like', "%{$buscar}%")
-              ->orWhere('correo', 'like', "%{$buscar}%")
-              ->orWhere('telefono', 'like', "%{$buscar}%");
-    })
-    ->orderBy('created_at', 'desc')
-    ->paginate(10);
+    $clientes = Cliente::query()
+
+        ->when($buscar, function ($query) use ($buscar) {
+            $query->where(function ($q) use ($buscar) {
+                $q->where('nombre', 'like', "%{$buscar}%")
+                  ->orWhere('apellido', 'like', "%{$buscar}%")
+                  ->orWhere('correo', 'like', "%{$buscar}%")
+                  ->orWhere('telefono', 'like', "%{$buscar}%");
+            });
+        })
+
+        ->when($estado, function ($query) use ($estado) {
+            $query->where('estado', $estado);
+        })
+
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
 
     return response()->json([
         'success' => true,

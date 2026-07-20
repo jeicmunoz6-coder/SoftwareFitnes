@@ -1,0 +1,23 @@
+<div class="toolbar">
+
+    <input
+        type="text"
+        placeholder="Buscar cliente..."
+        [ngModel]="buscar()"
+        (ngModelChange)="onBuscar($event)">
+
+    <select
+        [ngModel]="estado()"
+        (ngModelChange)="onEstado($event)">
+
+        <option value="">Todos</option>
+
+        <option value="Activo">Activo</option>
+
+        <option value="Pendiente">Pendiente</option>
+
+        <option value="Inactivo">Inactivo</option>
+
+    </select>
+
+</div>

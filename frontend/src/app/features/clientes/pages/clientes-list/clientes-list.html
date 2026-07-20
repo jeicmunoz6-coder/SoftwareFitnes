@@ -1,1 +1,110 @@
-<p>clientes-list works!</p>
+<div class="clientes-container">
+
+  <div class="header">
+    <div>
+      <h2>Gestión de Clientes</h2>
+      <p>Administra los clientes registrados en el gimnasio.</p>
+    </div>
+
+    <button class="btn-nuevo">
+      Actualizar
+    </button>
+  </div>
+
+  <!-- Buscador y filtros -->
+  <app-cliente-search
+    (buscarChange)="buscar.set($event); cargarClientes()"
+    (estadoChange)="estado.set($event); cargarClientes()">
+  </app-cliente-search>
+
+  <!-- Tabla -->
+  <div class="table-container">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        @for (cliente of clientes(); track cliente.id) {
+
+          <tr>
+
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.apellido }}</td>
+            <td>{{ cliente.correo }}</td>
+            <td>{{ cliente.telefono }}</td>
+
+            <td>
+              <span
+                class="estado"
+                [class.activo]="cliente.estado === 'Activo'"
+                [class.pendiente]="cliente.estado === 'Pendiente'"
+                [class.inactivo]="cliente.estado === 'Inactivo'">
+
+                {{ cliente.estado }}
+
+              </span>
+            </td>
+
+            <td class="acciones">
+
+              <button
+                class="btn-ver"
+                (click)="verCliente(cliente.id)"
+                title="Ver">
+                👁
+              </button>
+
+              <button
+                class="btn-editar"
+                (click)="editarCliente(cliente.id)"
+                title="Editar">
+                ✏
+              </button>
+
+              <button
+                class="btn-estado"
+                (click)="cambiarEstado(cliente.id)"
+                title="Cambiar estado">
+                🔄
+              </button>
+
+            </td>
+
+          </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- Modal -->
+  <app-cliente-modal
+    [abierto]="modalAbierto()"
+    [titulo]="tituloModal()"
+    (cerrar)="cerrarModal()">
+
+    <app-cliente-form
+      [cliente]="clienteSeleccionado()"
+      [modo]="modo()"
+      (guardar)="guardarCliente($event)">
+    </app-cliente-form>
+
+  </app-cliente-modal>
+
+</div>

@@ -1,27 +1,107 @@
-<h1>Dashboard</h1>
+<div class="dashboard">
 
-<p *ngIf="loading">Cargando datosss...</p>
+  <div class="dashboard-header">
 
-<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    <div>
+      <h1>🏋️ Dashboard</h1>
+      <p>Panel de administración del sistema Fitness.</p>
+    </div>
 
-<div *ngIf="administrador">
-  <p>
-    <strong>Nombreee:</strong> {{ administrador.nombre }}
-  </p>
+    <button
+      class="btn-profile"
+      routerLink="/profile">
 
-  <p>
-    <strong>Correo:</strong> {{ administrador.correo }}
-  </p>
+      👤 Mi Perfil
+
+    </button>
+
+  </div>
+
+  @if (loading()) {
+
+    <div class="loading">
+      <p>Cargando estadísticas...</p>
+    </div>
+
+  }
+
+  @if (errorMessage()) {
+
+    <div class="error">
+      {{ errorMessage() }}
+    </div>
+
+  }
+
+  @if (!loading() && estadisticas()) {
+
+    <div class="admin-card" *ngIf="administrador()">
+
+      <div class="avatar">
+        {{ administrador()?.nombre.charAt(0) }}
+      </div>
+
+      <div>
+        <h2>{{ administrador()?.nombre }}</h2>
+        <p>{{ administrador()?.correo }}</p>
+      </div>
+
+    </div>
+
+    <h2 class="title">
+      📊 Resumen General
+    </h2>
+
+    <div class="cards">
+
+      <div class="card blue">
+        <span>👥</span>
+        <h3>Clientes</h3>
+        <h1>{{ estadisticas()?.clientes }}</h1>
+      </div>
+
+      <div class="card green">
+        <span>✅</span>
+        <h3>Clientes Activos</h3>
+        <h1>{{ estadisticas()?.clientes_activos }}</h1>
+      </div>
+
+      <div class="card orange">
+        <span>🥗</span>
+        <h3>Alimentos</h3>
+        <h1>{{ estadisticas()?.alimentos }}</h1>
+      </div>
+
+    </div>
+
+    <h2 class="title">
+      ⚡ Accesos rápidos
+    </h2>
+
+    <div class="quick-actions">
+
+      <button routerLink="/clientes">
+        👥 Clientes
+      </button>
+
+      <button routerLink="/alimentos">
+        🥗 Alimentos
+      </button>
+
+      <button routerLink="/profile">
+        👤 Perfil
+      </button>
+
+      <button
+        class="logout"
+        (click)="cerrarSesion()">
+
+        🚪 Cerrar Sesión
+
+      </button>
+
+    </div>
+
+  }
+
 </div>
-
-<button (click)="cerrarSesion()">
-    Cerrar sesión
-</button>
-
-<button
-  routerLink="/profile"
-  style="background: blue; color: white; padding: 10px; margin-top: 20px;">
-  Mi Perfil
-</button>
-
-<p>Prueba Dashboard</p>

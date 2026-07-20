@@ -87,4 +87,45 @@ changePassword(datos: any): Observable<any> {
 
 }
 
+listarClientes(buscar: string = '', estado: string = '', page: number = 1): Observable<any> {
+  return this.http.get(
+    `${this.api}/clientes?buscar=${buscar}&estado=${estado}&page=${page}`
+  );
+}
+
+obtenerCliente(id: number): Observable<any> {
+  return this.http.get(
+    `${this.api}/clientes/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('cliente_token')}`
+      }
+    }
+  );
+}
+
+actualizarCliente(id: number, datos: any): Observable<any> {
+  return this.http.put(
+    `${this.api}/clientes/${id}`,
+    datos,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('cliente_token')}`
+      }
+    }
+  );
+}
+
+cambiarEstado(id: number): Observable<any> {
+  return this.http.put(
+    `${this.api}/clientes/${id}/estado`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('cliente_token')}`
+      }
+    }
+  );
+}
+
 }

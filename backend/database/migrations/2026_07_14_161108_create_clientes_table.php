@@ -26,7 +26,8 @@ return new class extends Migration
         $table->enum('estado', [
             'Pendiente',
             'Activo',
-            'Inactivo'
+            'Inactivo',
+            'Suspendido'
         ])->default('Pendiente');
 
         $table->rememberToken();

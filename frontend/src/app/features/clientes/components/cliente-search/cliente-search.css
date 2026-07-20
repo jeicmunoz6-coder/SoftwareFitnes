@@ -1,0 +1,43 @@
+.toolbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+}
+
+input{
+
+    flex:1;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    border:none;
+
+    background:#2c3440;
+
+    color:white;
+
+}
+
+select{
+
+    width:200px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2c3440;
+
+    color:white;
+
+}

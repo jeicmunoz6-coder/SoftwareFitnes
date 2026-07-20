@@ -5,7 +5,10 @@ import { Dashboard } from './features/dashboard/dashboard';
 import { authGuard } from './features/auth/guards/auth.guard';
 import { Profile as AdminProfile } from './features/profile/profile';
 
+import { ListaAlimentos } from './features/alimentos/pages/lista-alimentos/lista-alimentos';
+import { FormularioAlimento } from './features/alimentos/pages/formulario-alimento/formulario-alimento';
 
+import { AdminLayout } from './shared/layouts/admin-layout/admin-layout';
 // Clientes
 import { Register } from './features/clientes/pages/register/register';
 import { Login as ClienteLogin } from './features/clientes/pages/login/login';
@@ -17,12 +20,28 @@ import { clienteAuthGuard } from './features/clientes/guards/cliente-auth.guard'
 
 export const routes: Routes = [
 
-  // Administrador
+  // Login
   { path: '', component: Login },
 
-  { path: 'dashboard', component: Dashboard, canActivate: [authGuard] },
+  // Layout del administrador
+  {
+    path: '', component: AdminLayout, canActivate: [authGuard],children: 
+    [
 
-  { path: 'profile', component: AdminProfile, canActivate: [authGuard] },
+      { path: 'dashboard', component: Dashboard },
+
+      { path: 'profile', component: AdminProfile },
+
+      { path: 'clientes', component: ClientesList },
+
+      { path: 'alimentos', component: ListaAlimentos },
+
+      { path: 'alimentos/nuevo', component: FormularioAlimento },
+
+      { path: 'alimentos/editar/:id', component: FormularioAlimento }
+
+    ]
+  },
 
   // Cliente
   { path: 'cliente/register', component: Register },
@@ -33,9 +52,7 @@ export const routes: Routes = [
 
   { path: 'cliente/dashboard', redirectTo: 'cliente/profile', pathMatch: 'full' },
 
-  { path: 'cliente/completar-perfil', component: CompletarPerfil, canActivate: [clienteAuthGuard]  },
-
-  { path: 'clientes', component: ClientesList, canActivate: [authGuard] },
+  { path: 'cliente/completar-perfil', component: CompletarPerfil, canActivate: [clienteAuthGuard] },
 
   { path: '**', redirectTo: '' }
 

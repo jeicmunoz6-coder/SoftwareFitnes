@@ -1,0 +1,31 @@
+@if (abierto()) {
+
+<div class="overlay">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2>{{ titulo() }}</h2>
+
+            <button
+                class="btn-close"
+                (click)="cerrar.emit()">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <ng-content></ng-content>
+
+        </div>
+
+    </div>
+
+</div>
+
+}

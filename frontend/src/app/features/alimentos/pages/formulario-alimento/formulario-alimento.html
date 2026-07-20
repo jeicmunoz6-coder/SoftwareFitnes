@@ -1,0 +1,231 @@
+<div class="page">
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <h2>
+        <i class="bi bi-basket2-fill"></i>
+
+        {{ modoEdicion ? 'Editar alimento' : 'Nuevo alimento' }}
+
+      </h2>
+
+      <p>
+        Completa la información del alimento.
+      </p>
+
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+
+      <div class="grid">
+
+        <!-- Nombre -->
+        <div class="field">
+
+          <label>
+            <i class="bi bi-card-text"></i>
+            Nombre
+          </label>
+
+          <input
+            type="text"
+            formControlName="nombre"
+            placeholder="Ej: Arroz Integral">
+
+          @if(nombre.invalid && nombre.touched){
+
+            <small>El nombre es obligatorio.</small>
+
+          }
+
+        </div>
+
+        <!-- Porción -->
+        <div class="field">
+
+          <label>
+
+            <i class="bi bi-box"></i>
+
+            Porción
+
+          </label>
+
+          <input
+            type="text"
+            formControlName="porcion"
+            placeholder="Ej: 100 g">
+
+          @if(porcion.invalid && porcion.touched){
+
+            <small>La porción es obligatoria.</small>
+
+          }
+
+        </div>
+
+      </div>
+
+      <!-- Descripción -->
+
+      <div class="field">
+
+        <label>
+
+          <i class="bi bi-text-paragraph"></i>
+
+          Descripción
+
+        </label>
+
+        <textarea
+          rows="4"
+          formControlName="descripcion"
+          placeholder="Descripción del alimento">
+
+        </textarea>
+
+      </div>
+
+      <div class="grid grid-4">
+
+        <div class="field">
+
+          <label>
+
+            <i class="bi bi-fire"></i>
+
+            Calorías
+
+          </label>
+
+          <input
+            type="number"
+            formControlName="calorias">
+
+        </div>
+
+        <div class="field">
+
+          <label>
+
+            <i class="bi bi-lightning-charge-fill"></i>
+
+            Proteínas
+
+          </label>
+
+          <input
+            type="number"
+            formControlName="proteinas">
+
+        </div>
+
+        <div class="field">
+
+          <label>
+
+            <i class="bi bi-cup-hot-fill"></i>
+
+            Carbohidratos
+
+          </label>
+
+          <input
+            type="number"
+            formControlName="carbohidratos">
+
+        </div>
+
+        <div class="field">
+
+          <label>
+
+            <i class="bi bi-droplet-fill"></i>
+
+            Grasas
+
+          </label>
+
+          <input
+            type="number"
+            formControlName="grasas">
+
+        </div>
+
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+
+          <label>
+
+            <i class="bi bi-image"></i>
+
+            Imagen
+
+          </label>
+
+          <input
+            type="text"
+            formControlName="imagen"
+            placeholder="URL de la imagen">
+
+        </div>
+
+        <div class="field">
+
+          <label>
+
+            <i class="bi bi-check-circle-fill"></i>
+
+            Estado
+
+          </label>
+
+          <select formControlName="estado">
+
+            <option value="activo">Activo</option>
+
+            <option value="inactivo">Inactivo</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="buttons">
+
+        <button
+          type="button"
+          class="btn-secondary"
+          (click)="cancelar()">
+
+          <i class="bi bi-arrow-left-circle"></i>
+
+          Cancelar
+
+        </button>
+
+        <button
+          class="btn-primary"
+          type="submit"
+          [disabled]="guardando">
+
+          <i class="bi bi-floppy-fill"></i>
+
+          {{ guardando ? 'Guardando...' : 'Guardar alimento' }}
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

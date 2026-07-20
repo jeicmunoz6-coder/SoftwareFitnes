@@ -1,86 +1,129 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { AuthService } from '../auth/services/auth.service';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { catchError, of, timeout } from 'rxjs';
 import { Router, RouterLink } from '@angular/router';
+import { finalize } from 'rxjs';
+
+import { AuthService } from '../auth/services/auth.service';
+import { DashboardService } from './services/dashboard';
+import { Dashboard as DashboardStats } from './interfaces/dashboard';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './dashboard.html',
-  styleUrls: ['./dashboard.css'],
-  imports: [CommonModule, RouterLink]
+  styleUrls: ['./dashboard.css']
 })
-
 export class Dashboard implements OnInit {
+  sidebarColapsado = false;
 
-  private router = inject(Router);
-  private authService = inject(AuthService);
+  private readonly authService = inject(AuthService);
+  private readonly dashboardService = inject(DashboardService);
+  private readonly router = inject(Router);
 
-  administrador: any = null;
-  errorMessage = '';
-  loading = true;
+  readonly estadisticas = signal<DashboardStats | null>(null);
+  readonly administrador = signal<any>(null);
+
+  readonly loading = signal(false);
+  readonly errorMessage = signal('');
 
   ngOnInit(): void {
-    const stored = localStorage.getItem('administrador');
-    if (stored) {
-      this.administrador = JSON.parse(stored);
+
+    this.cargarAdministrador();
+
+    this.cargarEstadisticas();
+
+  }
+
+  private cargarAdministrador(): void {
+
+    const almacenado = localStorage.getItem('administrador');
+
+    if (almacenado) {
+      this.administrador.set(JSON.parse(almacenado));
     }
 
-    this.authService.me()
-      .pipe(
-        timeout(10000),
-        catchError((error) => {
-          console.error('Error al obtener /me:', error);
-          this.errorMessage = 'No se pudieron cargar los datos desde el servidor.';
+    this.authService.me().subscribe({
 
-          const storedAdmin = localStorage.getItem('administrador');
-          if (storedAdmin) {
-            this.administrador = JSON.parse(storedAdmin);
-          }
-          this.loading = false;
-          return of(null);
-        })
+      next: (respuesta) => {
+
+        this.administrador.set(respuesta);
+
+        localStorage.setItem(
+          'administrador',
+          JSON.stringify(respuesta)
+        );
+
+      },
+
+      error: (error) => {
+
+        console.error(error);
+
+      }
+
+    });
+
+  }
+
+  private cargarEstadisticas(): void {
+
+    this.loading.set(true);
+
+    this.errorMessage.set('');
+
+    this.dashboardService.obtenerEstadisticas()
+      .pipe(
+        finalize(() => this.loading.set(false))
       )
       .subscribe({
-        next: (respuesta) => {
-          if (respuesta) {
-            this.administrador = respuesta;
-          }
-          this.loading = false;
+
+        next: (data) => {
+
+          console.log('Dashboard:', data);
+
+          this.estadisticas.set(data);
+
         },
-        error: () => {
-          this.loading = false;
+
+        error: (error) => {
+
+          console.error(error);
+
+          this.errorMessage.set(
+            'No fue posible cargar las estadísticas.'
+          );
+
         }
+
       });
-      
+
   }
 
   cerrarSesion(): void {
 
-  this.authService.logout().subscribe({
+    this.authService.logout().subscribe({
 
-    next: () => {
+      next: () => {
 
-      localStorage.removeItem('token');
-      localStorage.removeItem('administrador');
+        localStorage.removeItem('token');
+        localStorage.removeItem('administrador');
 
-      this.router.navigate(['/']);
+        this.router.navigate(['/']);
 
-    },
+      },
 
-    error: () => {
+      error: () => {
 
-      // Aunque falle el servidor, cerramos la sesión local
-      localStorage.removeItem('token');
-      localStorage.removeItem('administrador');
+        localStorage.removeItem('token');
+        localStorage.removeItem('administrador');
 
-      this.router.navigate(['/']);
+        this.router.navigate(['/']);
 
-    }
+      }
 
-  });
+    });
 
-}
+  }
 
 }

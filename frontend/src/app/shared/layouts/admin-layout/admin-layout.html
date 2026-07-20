@@ -1,0 +1,16 @@
+<div class="layout">
+
+  <app-sidebar
+    [collapsed]="sidebarColapsado"
+    (toggle)="toggleSidebar()">
+  </app-sidebar>
+
+  <main
+    class="content"
+    [class.colapsado]="sidebarColapsado">
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>

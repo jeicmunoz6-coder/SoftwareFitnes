@@ -10,6 +10,9 @@ use App\Http\Controllers\Api\ClienteAuthController;
 use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\ClienteProfileController;
 
+use App\Http\Controllers\Api\AlimentoController;
+use App\Http\Controllers\Api\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Rutas públicas
@@ -74,6 +77,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/profile', [AdminProfileController::class, 'show']);
     Route::put('/admin/profile', [AdminProfileController::class, 'update']);
 
+
     Route::put('/admin/change-password', [AdminProfileController::class, 'changePassword']);
 
+    Route::apiResource('alimentos', AlimentoController::class);
+
+    Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class, 'index']);
 });

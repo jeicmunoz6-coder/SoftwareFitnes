@@ -1,0 +1,62 @@
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.campo{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+label{
+
+    color:white;
+
+    margin-bottom:6px;
+
+    font-weight:600;
+
+}
+
+input,
+select{
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#2b3240;
+
+    color:white;
+
+}
+
+.btn-guardar{
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2563eb;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}

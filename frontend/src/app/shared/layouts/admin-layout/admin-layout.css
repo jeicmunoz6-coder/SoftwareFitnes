@@ -1,0 +1,22 @@
+.layout{
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:#0c0e11;
+
+}
+
+
+.content{
+    flex:1;
+    margin-left:260px;
+    padding:0px;
+    transition:.35s;
+    min-height:100vh;
+}
+
+.content.colapsado{
+    margin-left:80px;
+}

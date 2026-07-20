@@ -1,0 +1,128 @@
+
+
+<aside
+class="sidebar"
+[class.collapsed]="collapsed">
+
+  <div class="brand">
+
+    <button
+class="toggle"
+(click)="toggle.emit()">
+
+<i
+class="bi"
+[class.bi-chevron-left]="!collapsed"
+[class.bi-chevron-right]="collapsed">
+</i>
+
+</button>
+    <div class="brand-mark">
+      <i class="bi bi-heart-pulse-fill"></i>
+    </div>
+
+    <div class="brand-text">
+      Fitness Pro
+      <small>Administrador</small>
+    </div>
+
+  </div>
+
+  <div class="nav-label">
+    MENÚ
+  </div>
+
+  <a
+    routerLink="/dashboard"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <i class="bi bi-speedometer2"></i>
+
+    <span>Dashboard</span>
+
+  </a>
+
+  <a
+    routerLink="/clientes"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <i class="bi bi-people-fill"></i>
+
+    <span>Clientes</span>
+
+  </a>
+
+  <a
+    routerLink="/alimentos"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <i class="bi bi-egg-fried"></i>
+
+    <span>Alimentos</span>
+
+  </a>
+
+  <a
+    routerLink="/planes-alimenticios"
+    class="nav-item">
+
+    <i class="bi bi-calendar2-week"></i>
+
+    <span>Planes Alimenticios</span>
+
+  </a>
+
+  <a
+    routerLink="/rutinas"
+    class="nav-item">
+
+    <i class="bi bi-activity"></i>
+
+    <span>Rutinas</span>
+
+  </a>
+
+  <a
+    routerLink="/ejercicios"
+    class="nav-item">
+
+    <i class="bi bi-bicycle"></i>
+
+    <span>Ejercisios</span>
+
+  </a>
+
+  <a
+    routerLink="/reportes"
+    class="nav-item">
+
+    <i class="bi bi-bar-chart-line"></i>
+
+    <span>Reportes</span>
+
+  </a>
+
+  <div class="sidebar-footer">
+
+    <div class="avatar">
+      J
+    </div>
+
+    <div>
+
+      <div class="who">
+        Administrador
+      </div>
+
+      <div class="role">
+        Sistema Fitness
+      </div>
+
+    </div>
+
+  </div>
+
+</aside>

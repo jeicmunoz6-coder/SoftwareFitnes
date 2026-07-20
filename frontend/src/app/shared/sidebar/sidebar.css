@@ -1,0 +1,268 @@
+/* ============================= */
+/* SIDEBAR */
+/* ============================= */
+@import "bootstrap-icons/font/bootstrap-icons.css";
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:260px;
+    height:100vh;
+
+    background:#15181d;
+    border-right:1px solid #1e222a;
+
+    display:flex;
+    flex-direction:column;
+
+    transition:.35s;
+
+    overflow:hidden;
+
+    z-index:1000;
+}
+
+/* Sidebar cerrado */
+
+.sidebar.collapsed{
+    width:80px;
+}
+
+/* ============================= */
+/* LOGO */
+/* ============================= */
+
+.brand{
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    padding:22px;
+
+    min-height:80px;
+
+}
+
+.brand-mark{
+
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    background:#cdf74a;
+
+    color:#1a2205;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:22px;
+
+    flex-shrink:0;
+
+}
+
+.brand-text{
+
+    color:white;
+
+    transition:.25s;
+
+}
+
+.sidebar.collapsed .brand-text{
+
+    opacity:0;
+
+    width:0;
+
+}
+
+/* ============================= */
+/* BOTÓN */
+/* ============================= */
+
+.toggle{
+
+    position:absolute;
+
+    top:25px;
+
+    right:-14px;
+
+    width:28px;
+
+    height:28px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#cdf74a;
+
+    color:#111;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+
+    z-index:20;
+
+}
+
+/* ============================= */
+/* MENU */
+/* ============================= */
+
+.nav-label{
+
+    padding:15px 22px;
+
+    color:#6c6a63;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    transition:.3s;
+
+}
+
+.sidebar.collapsed .nav-label{
+
+    opacity:0;
+
+}
+
+.nav-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    height:52px;
+
+    margin:4px 12px;
+
+    padding:0 18px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:#9a988f;
+
+    transition:.25s;
+
+}
+
+.nav-item i{
+
+    font-size:22px;
+
+    min-width:28px;
+
+    text-align:center;
+
+}
+
+.nav-item:hover{
+
+    background:#20242b;
+
+    color:white;
+
+}
+
+.nav-item.active{
+
+    background:#20242b;
+
+    color:#cdf74a;
+
+}
+
+.sidebar.collapsed .nav-item span{
+
+    display:none;
+
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+.sidebar-footer{
+
+    margin-top:auto;
+
+    border-top:1px solid #242933;
+
+    padding:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.avatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:#cdf74a;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#111;
+
+    font-weight:bold;
+
+    flex-shrink:0;
+
+}
+
+.sidebar.collapsed .who,
+.sidebar.collapsed .role{
+
+    display:none;
+
+}
+.content{
+
+    margin-left:260px;
+
+    transition:.35s;
+
+}
+.content.collapsed{
+
+    margin-left:80px;
+
+}
+.who{
+    color:#f3f2ee;
+    font-weight:600;
+    font-size:14px;
+}
+
+.role{
+    color:#9a988f;
+    font-size:12px;
+}

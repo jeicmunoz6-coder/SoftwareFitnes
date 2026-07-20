@@ -1,0 +1,430 @@
+/* ===== Página ===== */
+
+.page{
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ===== Tarjeta ===== */
+
+.card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 15px 45px rgba(0,0,0,.08);
+    border:1px solid #e5e7eb;
+}
+
+/* ===== Encabezado ===== */
+
+.card-header{
+
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+
+    color:white;
+
+    padding:28px 35px;
+
+}
+
+.card-header h2{
+
+    margin:0;
+
+    font-size:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-weight:700;
+
+}
+
+.card-header p{
+
+    margin-top:8px;
+
+    opacity:.95;
+
+    font-size:15px;
+
+}
+
+/* ===== Formulario ===== */
+
+form{
+
+    padding:35px;
+
+}
+
+/* ===== Secciones ===== */
+
+.section{
+
+    margin-bottom:35px;
+
+    border:1px solid #edf2f7;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    background:#fafafa;
+
+}
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#16a34a;
+
+    font-size:19px;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+    padding-bottom:12px;
+
+    border-bottom:2px solid #22c55e;
+
+}
+
+/* ===== Grid ===== */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+}
+
+.grid-4{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+/* ===== Campos ===== */
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.field label{
+
+    font-weight:600;
+
+    color:#374151;
+
+    margin-bottom:8px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.field label i{
+
+    color:#16a34a;
+
+    font-size:18px;
+
+}
+
+/* ===== Inputs ===== */
+
+.field input,
+.field textarea,
+.field select{
+
+    width:100%;
+
+    padding:13px 15px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    background:white;
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+.field textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+
+    outline:none;
+
+    border-color:#22c55e;
+
+    box-shadow:0 0 0 4px rgba(34,197,94,.18);
+
+}
+
+/* ===== Validaciones ===== */
+
+.field small{
+
+    margin-top:6px;
+
+    color:#dc2626;
+
+    font-size:13px;
+
+}
+
+/* ===== Estado ===== */
+
+select{
+
+    cursor:pointer;
+
+}
+
+/* ===== Botones ===== */
+
+.buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+.btn-primary{
+
+    background:#16a34a;
+
+    color:white;
+
+    border:none;
+
+    padding:13px 28px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.btn-primary:hover{
+
+    background:#15803d;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(34,197,94,.35);
+
+}
+
+.btn-primary:disabled{
+
+    background:#94a3b8;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+.btn-secondary{
+
+    background:#e5e7eb;
+
+    color:#374151;
+
+    border:none;
+
+    padding:13px 28px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.btn-secondary:hover{
+
+    background:#d1d5db;
+
+}
+
+/* ===== Vista previa imagen ===== */
+
+.preview{
+
+    margin-top:18px;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:15px;
+
+    border:2px dashed #22c55e;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:#f8fafc;
+
+}
+
+.preview img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.preview i{
+
+    font-size:60px;
+
+    color:#9ca3af;
+
+}
+
+/* ===== Animaciones ===== */
+
+.field input:hover,
+.field textarea:hover,
+.field select:hover{
+
+    border-color:#22c55e;
+
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width:992px){
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+.grid-4{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:650px){
+
+.grid-4{
+
+grid-template-columns:1fr;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+}
+
+.btn-primary,
+.btn-secondary{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.card-header h2{
+
+font-size:24px;
+
+}
+
+form{
+
+padding:20px;
+
+}
+
+.section{
+
+padding:18px;
+
+}
+
+}

@@ -1,0 +1,180 @@
+.clientes-container{
+    padding:30px;
+    color:#fff;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.header h2{
+    margin:0;
+    font-size:30px;
+    font-weight:700;
+    color:#fff;
+}
+
+.header p{
+    margin-top:5px;
+    color:#b8b8b8;
+}
+
+.btn-nuevo{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-nuevo:hover{
+    background:#1d4ed8;
+}
+
+.table-container{
+    background:#1b1f27;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#111827;
+}
+
+th{
+    padding:18px;
+    text-align:left;
+    color:#fff;
+    font-size:14px;
+}
+
+td{
+    padding:16px;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#e5e7eb;
+}
+
+tbody tr:hover{
+    background:#262d3b;
+}
+
+.estado{
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.activo{
+    background:#16a34a;
+    color:white;
+}
+
+.pendiente{
+    background:#f59e0b;
+    color:white;
+}
+
+.inactivo{
+    background:#ef4444;
+    color:white;
+}
+
+.acciones{
+    display:flex;
+    gap:10px;
+}
+
+.acciones button{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.btn-ver{
+    background:#2563eb;
+    color:white;
+}
+
+.btn-editar{
+    background:#f59e0b;
+    color:white;
+}
+
+.btn-estado{
+    background:#10b981;
+    color:white;
+}
+
+.acciones button:hover{
+    transform:scale(1.08);
+}
+.toolbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.search-box{
+
+    width:350px;
+
+}
+
+.search-box input{
+
+    width:100%;
+    padding:12px 15px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#2b3240;
+
+    color:white;
+
+    outline:none;
+
+}
+
+.search-box input::placeholder{
+
+    color:#aaa;
+
+}
+
+.filter-box select{
+
+    padding:12px 15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2b3240;
+
+    color:white;
+
+    cursor:pointer;
+
+}

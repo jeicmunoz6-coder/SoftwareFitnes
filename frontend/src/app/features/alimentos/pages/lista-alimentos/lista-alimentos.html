@@ -1,0 +1,199 @@
+<div class="page">
+
+  <header class="page-header">
+
+    <div>
+      <h1>
+        <i class="bi bi-basket2-fill"></i>
+        Alimentos
+      </h1>
+
+      <p class="subtitle">
+        Gestiona el catálogo de alimentos del sistema.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="btn-primary"
+      (click)="nuevoAlimento()">
+
+      <i class="bi bi-plus-circle-fill"></i>
+      Nuevo alimento
+
+    </button>
+
+  </header>
+
+  @if (cargando()) {
+
+    <p class="status">
+      <i class="bi bi-arrow-repeat"></i>
+      Cargando alimentos...
+    </p>
+
+  }
+
+  @if (error()) {
+
+    <p class="status error">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      {{ error() }}
+    </p>
+
+    <button
+      type="button"
+      class="btn-secondary"
+      (click)="listarAlimentos()">
+
+      <i class="bi bi-arrow-clockwise"></i>
+      Reintentar
+
+    </button>
+
+  }
+
+  @if (!cargando() && !error()) {
+
+    <div class="toolbar">
+
+      <div class="search-box">
+
+        <i class="bi bi-search search-icon"></i>
+
+        <input
+          type="text"
+          placeholder="Buscar alimento..."
+          [value]="busqueda()"
+          (input)="busqueda.set($any($event.target).value)">
+
+        @if (busqueda()) {
+
+          <button
+            type="button"
+            class="clear-btn"
+            (click)="limpiarBusqueda()">
+
+            <i class="bi bi-x-circle-fill"></i>
+
+          </button>
+
+        }
+
+      </div>
+
+      <div class="total">
+        <i class="bi bi-list-check"></i>
+        Total: {{ alimentosFiltrados().length }}
+      </div>
+
+    </div>
+
+    @if (alimentosFiltrados().length === 0) {
+
+      <p class="status">
+        <i class="bi bi-inbox"></i>
+        No se encontraron alimentos.
+      </p>
+
+    } @else {
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th><i class="bi bi-card-text"></i> Nombre</th>
+              <th><i class="bi bi-box-seam"></i> Porción</th>
+              <th><i class="bi bi-fire"></i> Calorías</th>
+              <th><i class="bi bi-lightning-charge-fill"></i> Proteínas</th>
+              <th><i class="bi bi-cup-hot-fill"></i> Carbohidratos</th>
+              <th><i class="bi bi-droplet-fill"></i> Grasas</th>
+              <th><i class="bi bi-check-circle-fill"></i> Estado</th>
+              <th class="text-center">
+                <i class="bi bi-gear-fill"></i>
+                Acciones
+              </th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            @for (alimento of alimentosFiltrados(); track alimento.id) {
+
+              <tr>
+
+                <td>
+                  <strong>{{ alimento.nombre }}</strong>
+                </td>
+
+                <td>{{ alimento.porcion }}</td>
+
+                <td>{{ alimento.calorias }}</td>
+
+                <td>{{ alimento.proteinas }}</td>
+
+                <td>{{ alimento.carbohidratos }}</td>
+
+                <td>{{ alimento.grasas }}</td>
+
+                <td>
+
+                  <span
+                    class="badge"
+                    [class.inactivo]="alimento.estado === 'inactivo'">
+
+                    <i
+                      class="bi"
+                      [class.bi-check-circle-fill]="alimento.estado === 'activo'"
+                      [class.bi-x-circle-fill]="alimento.estado === 'inactivo'">
+                    </i>
+
+                    {{ alimento.estado }}
+
+                  </span>
+
+                </td>
+
+                <td class="actions">
+
+                  <button
+                    type="button"
+                    class="btn-edit"
+                    title="Editar"
+                    (click)="editarAlimento(alimento.id!)">
+
+                    <i class="bi bi-pencil-square"></i>
+
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn-delete"
+                    title="Eliminar"
+                    (click)="eliminarAlimento(alimento.id!)">
+
+                    <i class="bi bi-trash3-fill"></i>
+
+                  </button>
+
+                </td>
+
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    }
+
+  }
+
+</div>
